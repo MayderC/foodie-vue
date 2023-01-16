@@ -1,23 +1,45 @@
 <template>
-  <form @submit.prevent class="red">
-    <v-text-field
-      class="red"
-      v-model="name"
-      label="First name"
-      required
-    ></v-text-field>
-    <v-text-field v-model="name" label="Name" required></v-text-field>
-    <v-text-field v-model="name" label="Name" required></v-text-field>
-    <v-text-field v-model="email" label="E-mail" required></v-text-field>
-    <v-btn class="mr-4" type="submit"> submit </v-btn>
-  </form>
+  <div class="form-login">
+    <form @submit.prevent class="flex flex-row flex-wrap gap-3.5 bg-azulito">
+      <h2 class="font-bold text-center text-naranjita text-2xl">Login</h2>
+      <RcInput
+        @change="(value) => (email = value)"
+        :value="email"
+        placeholder="Name"
+        type="text"
+      ></RcInput>
+      <RcInput
+        @change="(value) => (password = value)"
+        :value="password"
+        placeholder="Password"
+        :type="showPass ? 'text' : 'password'"
+      ></RcInput>
+      <label class="self-start text-white" for="show-pass">
+        <input type="checkbox" v-model="showPass" name="" id="show-pass" />
+        <span> Show password</span>
+      </label>
+      <RcButton @click="test" text="Login"></RcButton>
+    </form>
+  </div>
 </template>
 
 <script setup lang="ts">
+import RcButton from "@/common/components/RcButton.vue";
 import { ref } from "vue";
+import RcInput from "@/common/components/RcInput.vue";
 
-const name = ref("");
 const email = ref("");
+const password = ref("");
+const showPass = ref(false);
+
+const test = () => console.log("test");
 </script>
 
-<style scoped></style>
+<style scoped>
+form {
+  width: 300px;
+  border-radius: 20px;
+  padding: 15px;
+  justify-content: center;
+}
+</style>
