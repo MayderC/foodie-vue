@@ -18,7 +18,7 @@
         <input type="checkbox" v-model="showPass" name="" id="show-pass" />
         <span> Show password</span>
       </label>
-      <RcButton @click="test" text="Login"></RcButton>
+      <RcButton @click="handleClick" text="Login"></RcButton>
     </form>
   </div>
 </template>
@@ -27,12 +27,16 @@
 import RcButton from "@/common/components/RcButton.vue";
 import { ref } from "vue";
 import RcInput from "@/common/components/RcInput.vue";
+import { login } from "@/services/auth/auth";
 
 const email = ref("");
 const password = ref("");
 const showPass = ref(false);
 
-const test = () => console.log("test");
+const handleClick = async () => {
+  if (password.value.length < 6) return;
+  const user = await login({ email: email.value, password: password.value });
+};
 </script>
 
 <style scoped>
