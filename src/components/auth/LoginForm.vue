@@ -35,7 +35,7 @@ const showPass = ref(false);
 
 const handleClick = async () => {
   if (password.value.length < 6) return;
-  const user = await login({ email: email.value, password: password.value });
+  const user = await login({ username: email.value, password: password.value });
 };
 </script>
 

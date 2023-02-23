@@ -30,7 +30,7 @@
         <input type="checkbox" v-model="showPass" name="" id="show-pass" />
         <span> Show password</span>
       </label>
-      <RcButton text="Register"></RcButton>
+      <RcButton @click="handleClick" text="Register"></RcButton>
     </form>
   </div>
 </template>
@@ -38,6 +38,7 @@
 <script setup lang="ts">
 import RcButton from "@/common/components/RcButton.vue";
 import RcInput from "@/common/components/RcInput.vue";
+import { register } from "@/services/auth/auth";
 import { ref } from "vue";
 
 const showPass = ref(false);
@@ -45,6 +46,14 @@ const email = ref("");
 const username = ref("");
 const password = ref("");
 const rPassword = ref("");
+
+const handleClick = async () => {
+  const user = await register({
+    email: email.value,
+    username: username.value,
+    password: password.value,
+  });
+};
 </script>
 
 <style scoped>

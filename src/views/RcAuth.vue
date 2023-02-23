@@ -28,8 +28,6 @@ import { ref } from "vue";
 const formToggle = ref(false);
 
 const swithForm = () => {
-  //true  = registerform
-  //false = loginform
   formToggle.value = formToggle.value ? false : true;
 };
 </script>
