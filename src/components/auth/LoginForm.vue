@@ -28,6 +28,11 @@ import RcButton from "@/common/components/RcButton.vue";
 import { ref } from "vue";
 import RcInput from "@/common/components/RcInput.vue";
 import { login } from "@/services/auth/auth";
+import { useAuthStore } from "../../stores/auth";
+
+const store = useAuthStore();
+
+const { setProfileAuth } = store;
 
 const email = ref("");
 const password = ref("");
@@ -36,6 +41,7 @@ const showPass = ref(false);
 const handleClick = async () => {
   if (password.value.length < 6) return;
   const user = await login({ username: email.value, password: password.value });
+  setProfileAuth(user);
 };
 </script>
 
