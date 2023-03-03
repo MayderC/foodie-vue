@@ -1,19 +1,13 @@
 <template>
   <main>
-    <header>
+    <header class="">
       <div class="header-container">
         <div class="header-texts">
           <h2 class="header-title">Foodie</h2>
           <p class="header-paragraph">
             Con Foodie, siempre hay algo delicioso que descubrir.
           </p>
-          <button
-            @click="$router.push('/auth')"
-            class="mt-4"
-            rounded
-            color="blue-grey"
-            dark
-          >
+          <button @click="$router.push('/auth')" class="btn" rounded dark>
             Empezar
           </button>
         </div>
@@ -30,6 +24,9 @@
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap");
 
+.btn {
+  @apply bg-red-400 hover:bg-red-500 py-1 px-4 rounded-[20px] text-white font-bold mt-3;
+}
 .header-title {
   font-family: "Merriweather", serif;
   background-image: linear-gradient(45deg, #ff8a78 0, #eb584d 50%);

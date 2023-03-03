@@ -1,16 +1,24 @@
-import { createRouter, createWebHistory } from "vue-router";
-import type { RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  type RouteRecordRaw,
+} from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: "root",
     component: () => import("@/views/RcIndex.vue"),
   },
   {
     path: "/auth",
     name: "auth",
     component: () => import("@/views/RcAuth.vue"),
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: () => import("@/views/RcHome.vue"),
   },
 ];
 
